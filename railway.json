@@ -1,0 +1,29 @@
+# Railway Deployment Configuration
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "npm install --production",
+    "startCommand": "npm start"
+  },
+  "deploy": {
+    "numReplicas": 1,
+    "sleepApplication": false,
+    "restartPolicyType": "ON_FAILURE",
+    "restartPolicyMaxRetries": 3
+  },
+  "networking": {
+    "serviceDomain": {
+      "suffix": ".railway.app"
+    }
+  },
+  "observability": {
+    "healthcheckPath": "/health",
+    "healthcheckTimeout": 5000,
+    "healthcheckInterval": 30000
+  },
+  "variables": {
+    "NODE_ENV": "production",
+    "LOG_LEVEL": "INFO"
+  }
+}
