@@ -13,129 +13,155 @@ class MCPManager {
     this.registerServer({
       name: 'filesystem',
       command: 'npx',
-      args: ['@modelcontextprotocol/server-filesystem', '/tmp'],
+      args: ["-y", '@modelcontextprotocol/server-filesystem', '/tmp'],
       env: {},
       autoStart: false,
       description: 'File system operations in /tmp directory'
     });
 
-    // Web3 MCP servers (if available)
-    this.registerServer({
-      name: 'web3-mcp',
-      command: 'npx',
-      args: ['web3-mcp'],
-      env: {
-        // Add blockchain RPC URLs if needed
-        ETH_RPC_URL: process.env.ETH_RPC_URL,
-        POLYGON_RPC_URL: process.env.POLYGON_RPC_URL,
-      },
-      autoStart: false,
-      description: 'Web3 blockchain interactions'
-    });
-
-    // Nodit MCP server (using the web3-mcp tools we have)
+    // Nodit MCP server
     this.registerServer({
       name: 'nodit',
-      command: 'node',
-      args: ['-e', this.getNoditServerCode()],
+      command: 'npx',
+      args: ["-y", "@noditlabs/nodit-mcp-server"],
       env: {
         NODIT_API_KEY: process.env.NODIT_API_KEY,
       },
       autoStart: false,
-      description: 'Blockchain data queries via Nodit API'
+      description: 'Base MCP for other blockchain analytics in the system'
+    });
+
+    // Web3 MCP Base Server
+    this.registerServer({
+      name: 'nodit',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "agent-base"],
+      env: {},
+      autoStart: false,
+      description: 'Base MCP tools including symbol converter, cached Nodit API specs'
+    });
+
+    // Portfolio Snapshot
+    this.registerServer({
+      name: 'portfolio-snapshot',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "portfolio-snapshot"],
+      env: {},
+      autoStart: false,
+      description: 'Cross-chain wallet and portfolio analysis for EVM-chains'
+    });
+
+    // Gas Optimization Helper
+    this.registerServer({
+      name: 'gas-optimization-helper',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "gas-optimization-helper"],
+      env: {},
+      autoStart: false,
+      description: 'Smart gas price analysis and transaction timing optimization to minimize fees across EVM chains'
+    });
+
+    // Whale Monitor
+    this.registerServer({
+      name: 'whale-monitor',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "whale-monitor"],
+      env: {},
+      autoStart: false,
+      description: 'Track large token transfers and whale wallet activities'
+    });
+
+    // Token Intelligence
+    this.registerServer({
+      name: 'token-intelligence',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "token-intelligence"],
+      env: {},
+      autoStart: false,
+      description: 'Comprehensive token analysis including price data, holder distribution, and market metrics'
+    });
+
+    // Transaction Tracker
+    this.registerServer({
+      name: 'transaction-tracker',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "transaction-tracker"],
+      env: {},
+      autoStart: false,
+      description: 'Detailed transaction analysis and address activity monitoring'
+    });
+
+    // NFT Collection Insights
+    this.registerServer({
+      name: 'nft-collection-insights',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "nft-collection-insights"],
+      env: {},
+      autoStart: false,
+      description: 'NFT collection analytics including holder distribution, trading activity, and rarity analysis'
+    });
+
+    // Bitcoin Wallet Analyzer
+    this.registerServer({
+      name: 'bitcoin-wallet-analyzer',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "bitcoin-wallet-analyzer"],
+      env: {},
+      autoStart: false,
+      description: 'Comprehensive Bitcoin wallet analysis with UTXO optimization'
+    });
+
+    // Bitcoin Transaction Tracker
+    this.registerServer({
+      name: 'bitcoin-transaction-tracker',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "bitcoin-transaction-tracker"],
+      env: {},
+      autoStart: false,
+      description: 'Bitcoin transaction forensics and flow analysis'
+    });
+
+    // Bitcoin Network Insights
+    this.registerServer({
+      name: 'bitcoin-network-insights',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "bitcoin-network-insights"],
+      env: {},
+      autoStart: false,
+      description: 'Bitcoin network health monitoring and mining analytics'
+    });
+
+    // EVM DeFi Analytics
+    this.registerServer({
+      name: 'evm-defi',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "evm-defi"],
+      env: {},
+      autoStart: false,
+      description: 'Comprehensive DeFi analytics for liquidity pools, yield farming, and DEX trading for EVM chains'
+    });
+
+    // Aptos DeFi Analytics
+    this.registerServer({
+      name: 'aptos-defi',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "aptos-defi"],
+      env: {},
+      autoStart: false,
+      description: 'Native Aptos DeFi ecosystem analysis including coin activities, liquidity pools, and protocol interactions'
+    });
+
+    // Quant Trading Analytics
+    this.registerServer({
+      name: 'quant-trading',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "quant-trading"],
+      env: {},
+      autoStart: false,
+      description: 'Institutional-grade quantitative trading platform combining multi-factor token scoring, momentum detection, and risk assessment'
     });
 
     logger.info('✅ Default MCP servers registered');
-  }
-
-  getNoditServerCode() {
-    // Inline MCP server code for Nodit API
-    return `
-const { MCPServer } = require('@modelcontextprotocol/sdk/server');
-const { StdioServerTransport } = require('@modelcontextprotocol/sdk/server/stdio');
-
-const server = new MCPServer({
-  name: 'nodit-server',
-  version: '1.0.0'
-});
-
-// Define tools
-server.setRequestHandler('tools/list', async () => ({
-  tools: [
-    {
-      name: 'get_native_balance',
-      description: 'Get native token balance for an address',
-      inputSchema: {
-        type: 'object',
-        properties: {
-          address: { type: 'string', description: 'Wallet address' },
-          chain: { type: 'string', description: 'Blockchain network' }
-        },
-        required: ['address', 'chain']
-      }
-    },
-    {
-      name: 'get_token_transfers',
-      description: 'Get token transfer history',
-      inputSchema: {
-        type: 'object',
-        properties: {
-          address: { type: 'string', description: 'Wallet address' },
-          chain: { type: 'string', description: 'Blockchain network' },
-          limit: { type: 'number', description: 'Number of transfers to fetch' }
-        },
-        required: ['address', 'chain']
-      }
-    }
-  ]
-}));
-
-server.setRequestHandler('tools/call', async (request) => {
-  const { name, arguments: args } = request.params;
-  
-  // Mock implementation - replace with actual Nodit API calls
-  switch (name) {
-    case 'get_native_balance':
-      return {
-        content: [{
-          type: 'text',
-          text: JSON.stringify({
-            address: args.address,
-            chain: args.chain,
-            balance: '1.5 ETH',
-            timestamp: new Date().toISOString()
-          })
-        }]
-      };
-    
-    case 'get_token_transfers':
-      return {
-        content: [{
-          type: 'text',
-          text: JSON.stringify({
-            address: args.address,
-            chain: args.chain,
-            transfers: [
-              {
-                hash: '0x123...',
-                from: '0xabc...',
-                to: args.address,
-                value: '100 USDC',
-                timestamp: new Date().toISOString()
-              }
-            ]
-          })
-        }]
-      };
-      
-    default:
-      throw new Error(\`Unknown tool: \${name}\`);
-  }
-});
-
-const transport = new StdioServerTransport();
-server.connect(transport);
-`;
   }
 
   registerServer(config) {
@@ -164,7 +190,7 @@ server.connect(transport);
     logger.info(`🔌 Connecting to MCP server: ${serverName}`);
 
     const client = new MCPClient(mcpConfig, serverName);
-    
+
     // Set up event listeners
     client.on('disconnected', () => {
       logger.info(`🔌 MCP server ${serverName} disconnected`);
@@ -179,9 +205,9 @@ server.connect(transport);
       await client.connect();
       this.clients.set(serverName, client);
       logger.info(`✅ Successfully connected to MCP server: ${serverName}`);
-      
-      return { 
-        connected: true, 
+
+      return {
+        connected: true,
         serverName,
         status: client.getStatus()
       };
@@ -318,7 +344,7 @@ server.connect(transport);
   getServerStatus(serverName) {
     const client = this.clients.get(serverName);
     const config = this.configs.get(serverName);
-    
+
     return {
       name: serverName,
       registered: !!config,
