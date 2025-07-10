@@ -35,7 +35,7 @@ class MCPManager {
     this.registerServer({
       name: 'agent-base',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "agent-base"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=agent-base"],
       env: {},
       autoStart: false,
       description: 'Base MCP tools including symbol converter, cached Nodit API specs'
@@ -45,7 +45,7 @@ class MCPManager {
     this.registerServer({
       name: 'portfolio-snapshot',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "portfolio-snapshot"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=portfolio-snapshot"],
       env: {},
       autoStart: false,
       description: 'Cross-chain wallet and portfolio analysis for EVM-chains'
@@ -55,7 +55,7 @@ class MCPManager {
     this.registerServer({
       name: 'gas-optimization-helper',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "gas-optimization-helper"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=gas-optimization-helper"],
       env: {},
       autoStart: false,
       description: 'Smart gas price analysis and transaction timing optimization to minimize fees across EVM chains'
@@ -65,7 +65,7 @@ class MCPManager {
     this.registerServer({
       name: 'whale-monitor',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "whale-monitor"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=whale-monitor"],
       env: {},
       autoStart: false,
       description: 'Track large token transfers and whale wallet activities'
@@ -75,7 +75,7 @@ class MCPManager {
     this.registerServer({
       name: 'token-intelligence',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "token-intelligence"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=token-intelligence"],
       env: {},
       autoStart: false,
       description: 'Comprehensive token analysis including price data, holder distribution, and market metrics'
@@ -85,7 +85,7 @@ class MCPManager {
     this.registerServer({
       name: 'transaction-tracker',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "transaction-tracker"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=transaction-tracker"],
       env: {},
       autoStart: false,
       description: 'Detailed transaction analysis and address activity monitoring'
@@ -95,7 +95,7 @@ class MCPManager {
     this.registerServer({
       name: 'nft-collection-insights',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "nft-collection-insights"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=nft-collection-insights"],
       env: {},
       autoStart: false,
       description: 'NFT collection analytics including holder distribution, trading activity, and rarity analysis'
@@ -105,7 +105,7 @@ class MCPManager {
     this.registerServer({
       name: 'bitcoin-wallet-analyzer',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "bitcoin-wallet-analyzer"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=bitcoin-wallet-analyzer"],
       env: {},
       autoStart: false,
       description: 'Comprehensive Bitcoin wallet analysis with UTXO optimization'
@@ -115,7 +115,7 @@ class MCPManager {
     this.registerServer({
       name: 'bitcoin-transaction-tracker',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "bitcoin-transaction-tracker"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=bitcoin-transaction-tracker"],
       env: {},
       autoStart: false,
       description: 'Bitcoin transaction forensics and flow analysis'
@@ -125,7 +125,7 @@ class MCPManager {
     this.registerServer({
       name: 'bitcoin-network-insights',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "bitcoin-network-insights"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=bitcoin-network-insights"],
       env: {},
       autoStart: false,
       description: 'Bitcoin network health monitoring and mining analytics'
@@ -135,7 +135,7 @@ class MCPManager {
     this.registerServer({
       name: 'evm-defi',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "evm-defi"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode=evm-defi"],
       env: {},
       autoStart: false,
       description: 'Comprehensive DeFi analytics for liquidity pools, yield farming, and DEX trading for EVM chains'
@@ -145,7 +145,7 @@ class MCPManager {
     this.registerServer({
       name: 'aptos-defi',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "aptos-defi"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=aptos-defi"],
       env: {},
       autoStart: false,
       description: 'Native Aptos DeFi ecosystem analysis including coin activities, liquidity pools, and protocol interactions'
@@ -155,7 +155,7 @@ class MCPManager {
     this.registerServer({
       name: 'quant-trading',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "quant-trading"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=quant-trading"],
       env: {},
       autoStart: false,
       description: 'Institutional-grade quantitative trading platform combining multi-factor token scoring, momentum detection, and risk assessment'
