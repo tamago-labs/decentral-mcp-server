@@ -33,7 +33,8 @@ class MCPManager {
       description: 'Base MCP for other blockchain analytics in the system'
     });
 
-    logger.info("process.env.NODIT_API_KEY, ", process.env.NODIT_API_KEY)
+    logger.info("process.env.MCP_API_KEY, ", process.env.MCP_API_KEY)
+    logger.info(  process.env.NODIT_API_KEY)
 
     // Web3 MCP Base Server
     this.registerServer({
