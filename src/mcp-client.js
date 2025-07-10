@@ -18,7 +18,7 @@ class MCPClient extends EventEmitter {
     return new Promise((resolve, reject) => {
       logger.info(`[MCP Client] Starting server: ${this.config.command} ${this.config.args?.join(' ') || ''}`);
       
-      logger.info(`config env: ${this.config.env}`)
+      logger.info(`config env: ${JSON.stringify(this.config.env)}`)
 
       try {
         this.process = spawn(this.config.command, this.config.args || [], {
