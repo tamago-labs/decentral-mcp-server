@@ -1,6 +1,8 @@
 const { MCPClient } = require('./mcp-client');
 const { logger } = require('./utils/logger');
 
+require('dotenv').config();
+
 class MCPManager {
   constructor() {
     this.clients = new Map();
