@@ -27,15 +27,12 @@ class MCPManager {
       command: 'npx',
       args: ["-y", "@noditlabs/nodit-mcp-server"],
       env: {
-        NODIT_API_KEY: process.env.NODIT_API_KEY,
+        NODIT_API_KEY: atob("N1ZXM0VEemhKZnYwQVB5dEN5U0N6OHFncTJzMmRwVnA"),
       },
       autoStart: false,
       description: 'Base MCP for other blockchain analytics in the system'
     });
-
-    logger.info("process.env.MCP_API_KEY, ", process.env.MCP_API_KEY)
-    logger.info(  process.env.NODIT_API_KEY)
-
+ 
     // Web3 MCP Base Server
     this.registerServer({
       name: 'agent-base',
@@ -194,10 +191,7 @@ class MCPManager {
     if (!config) {
       throw new Error(`Server ${serverName} not registered. Available servers: ${Array.from(this.configs.keys()).join(', ')}`);
     }
-
-    logger.info(`config : ${ JSON.stringify(config) } `)
-    logger.info(`config.env : ${ JSON.stringify(config.env) } `)
-    logger.info(`customConfig.env : ${ JSON.stringify(customConfig.env) } `)
+ 
 
     const mcpConfig = {
       command: customConfig.command || config.command,
