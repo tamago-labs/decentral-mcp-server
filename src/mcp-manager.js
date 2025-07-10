@@ -33,6 +33,8 @@ class MCPManager {
       description: 'Base MCP for other blockchain analytics in the system'
     });
 
+    logger.info("process.env.NODIT_API_KEY, ", process.env.NODIT_API_KEY)
+
     // Web3 MCP Base Server
     this.registerServer({
       name: 'agent-base',
@@ -192,6 +194,7 @@ class MCPManager {
       throw new Error(`Server ${serverName} not registered. Available servers: ${Array.from(this.configs.keys()).join(', ')}`);
     }
 
+    logger.info(`config : ${ JSON.stringify(config) } `)
     logger.info(`config.env : ${ JSON.stringify(config.env) } `)
     logger.info(`customConfig.env : ${ JSON.stringify(customConfig.env) } `)
 
