@@ -33,7 +33,7 @@ class MCPManager {
 
     // Web3 MCP Base Server
     this.registerServer({
-      name: 'nodit',
+      name: 'agent-base',
       command: 'npx',
       args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode", "agent-base"],
       env: {},
