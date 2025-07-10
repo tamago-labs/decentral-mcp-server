@@ -199,6 +199,8 @@ class MCPManager {
       cwd: customConfig.cwd || config.cwd
     };
 
+    logger.info(`debug mcp config ${ JSON.stringify(mcpConfig) }`)
+
     logger.info(`🔌 Connecting to MCP server: ${serverName}`);
 
     const client = new MCPClient(mcpConfig, serverName);
