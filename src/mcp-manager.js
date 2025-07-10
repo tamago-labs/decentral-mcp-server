@@ -163,6 +163,16 @@ class MCPManager {
       description: 'Institutional-grade quantitative trading platform combining multi-factor token scoring, momentum detection, and risk assessment'
     });
 
+    // Block Analytics  
+    this.registerServer({
+      name: 'block-analytics',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=block-analytics"],
+      env: {},
+      autoStart: false,
+      description: 'Block tools for EVM-chains, good for testing.'
+    });
+
     logger.info('✅ Default MCP servers registered');
   }
 
