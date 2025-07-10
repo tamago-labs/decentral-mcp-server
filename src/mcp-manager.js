@@ -135,7 +135,7 @@ class MCPManager {
     this.registerServer({
       name: 'evm-defi',
       command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent-mode=evm-defi"],
+      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=evm-defi"],
       env: {},
       autoStart: false,
       description: 'Comprehensive DeFi analytics for liquidity pools, yield farming, and DEX trading for EVM chains'
