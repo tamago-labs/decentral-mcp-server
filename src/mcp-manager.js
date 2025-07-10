@@ -192,6 +192,9 @@ class MCPManager {
       throw new Error(`Server ${serverName} not registered. Available servers: ${Array.from(this.configs.keys()).join(', ')}`);
     }
 
+    logger.info(`config.env : ${ JSON.stringify(config.env) } `)
+    logger.info(`customConfig.env : ${ JSON.stringify(customConfig.env) } `)
+
     const mcpConfig = {
       command: customConfig.command || config.command,
       args: customConfig.args || config.args,
