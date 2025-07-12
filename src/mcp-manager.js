@@ -54,14 +54,14 @@ class MCPManager {
     });
 
     // Gas Optimization Helper
-    this.registerServer({
-      name: 'gas-optimization-helper',
-      command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=gas-optimization-helper"],
-      env: {},
-      autoStart: false,
-      description: 'Smart gas price analysis and transaction timing optimization to minimize fees across EVM chains'
-    });
+    // this.registerServer({
+    //   name: 'gas-optimization-helper',
+    //   command: 'npx',
+    //   args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=gas-optimization-helper"],
+    //   env: {},
+    //   autoStart: false,
+    //   description: 'Smart gas price analysis and transaction timing optimization to minimize fees across EVM chains'
+    // });
 
     // Whale Monitor
     this.registerServer({
@@ -84,14 +84,14 @@ class MCPManager {
     });
 
     // Transaction Tracker
-    this.registerServer({
-      name: 'transaction-tracker',
-      command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=transaction-tracker"],
-      env: {},
-      autoStart: false,
-      description: 'Detailed transaction analysis and address activity monitoring'
-    });
+    // this.registerServer({
+    //   name: 'transaction-tracker',
+    //   command: 'npx',
+    //   args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=transaction-tracker"],
+    //   env: {},
+    //   autoStart: false,
+    //   description: 'Detailed transaction analysis and address activity monitoring'
+    // });
 
     // NFT Collection Insights
     this.registerServer({
@@ -114,14 +114,14 @@ class MCPManager {
     });
 
     // Bitcoin Transaction Tracker
-    this.registerServer({
-      name: 'bitcoin-transaction-tracker',
-      command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=bitcoin-transaction-tracker"],
-      env: {},
-      autoStart: false,
-      description: 'Bitcoin transaction forensics and flow analysis'
-    });
+    // this.registerServer({
+    //   name: 'bitcoin-transaction-tracker',
+    //   command: 'npx',
+    //   args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=bitcoin-transaction-tracker"],
+    //   env: {},
+    //   autoStart: false,
+    //   description: 'Bitcoin transaction forensics and flow analysis'
+    // });
 
     // Bitcoin Network Insights
     this.registerServer({
@@ -164,14 +164,14 @@ class MCPManager {
     });
 
     // Block Analytics  
-    this.registerServer({
-      name: 'block-analytics',
-      command: 'npx',
-      args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=block-analytics"],
-      env: {},
-      autoStart: false,
-      description: 'Block tools for EVM-chains, good for testing.'
-    });
+    // this.registerServer({
+    //   name: 'block-analytics',
+    //   command: 'npx',
+    //   args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=block-analytics"],
+    //   env: {},
+    //   autoStart: false,
+    //   description: 'Block tools for EVM-chains, good for testing.'
+    // });
 
     logger.info('✅ Default MCP servers registered');
   }
