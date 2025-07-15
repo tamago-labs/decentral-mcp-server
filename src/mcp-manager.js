@@ -32,7 +32,7 @@ class MCPManager {
       autoStart: false,
       description: 'Base MCP for other blockchain analytics in the system'
     });
- 
+
     // Web3 MCP Base Server
     this.registerServer({
       name: 'agent-base',
@@ -143,14 +143,24 @@ class MCPManager {
       description: 'Comprehensive DeFi analytics for liquidity pools, yield farming, and DEX trading for EVM chains'
     });
 
-    // Aptos DeFi Analytics
+    // Aptos Index Node
     this.registerServer({
-      name: 'aptos-defi',
+      name: 'aptos-index-node',
       command: 'npx',
       args: ["-y", "@tamago-labs/web3-mcp", "--agent_mode=aptos-defi"],
       env: {},
       autoStart: false,
-      description: 'Native Aptos DeFi ecosystem analysis including coin activities, liquidity pools, and protocol interactions'
+      description: 'Indexes Aptos DeFi data including token activity, liquidity pools, and protocol usage for real-time analytics and agent use.'
+    });
+
+    // Aptos DeFi Agent
+    this.registerServer({
+      name: 'aptos-defi-agent',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/aptos-mcp"],
+      env: {},
+      autoStart: false,
+      description: 'Enables token operations, price and balance queries, Liquidswap DEX interactions (swap, add/remove liquidity, pool creation), APT staking, and full support for Joule and Thala DeFi protocols including lending, borrowing, claiming rewards, and stablecoin minting.'
     });
 
     // Quant Trading Analytics
@@ -191,7 +201,7 @@ class MCPManager {
     if (!config) {
       throw new Error(`Server ${serverName} not registered. Available servers: ${Array.from(this.configs.keys()).join(', ')}`);
     }
- 
+
 
     const mcpConfig = {
       command: customConfig.command || config.command,
