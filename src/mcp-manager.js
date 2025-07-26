@@ -183,6 +183,21 @@ class MCPManager {
     //   description: 'Block tools for EVM-chains, good for testing.'
     // });
 
+    // Cronos MCP 
+    this.registerServer({
+      name: 'cronos-mcp',
+      command: 'npx',
+      args: [
+        "-y",
+        "@tamago-labs/cronos-mcp",
+        `--cronos_evm_api_key=${atob("STFiVXJuTkpjRGtwVU1vWXBkQ2ZDNW1DcW5jVURvaWU=")}`,
+        `--cronos_zkevm_api_key=${atob("YkQ5cHNCZDlqRWFsbzlPZTJ0ZTJ0MlZtTnpYZm9LQUs=")}`
+      ],
+      env: {},
+      autoStart: false,
+      description: 'Cronos MCP'
+    });
+
     logger.info('✅ Default MCP servers registered');
   }
 
