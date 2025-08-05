@@ -198,6 +198,21 @@ class MCPManager {
       description: 'Cronos MCP'
     });
 
+    // OKX DEX MCP
+    this.registerServer({
+      name: 'okx-dex-mcp',
+      command: 'npx',
+      args: ["-y", "@tamago-labs/okx-dex-mcp"],
+      env: {
+        OKX_API_KEY: atob("MGI2NjE5ZTMtNzg3Yy00MjNiLTkwMjgtMWI4NDFiMWQwYzBi"),
+        OKX_SECRET_KEY: atob("OThBOEM2MUQyQUNEQjdBMDY3MThCNUNDMEI1NUUxM0Q="),
+        OKX_API_PASSPHRASE: atob("T2htODI4OCY="),
+        OKX_PROJECT_ID: atob("OGUwZDc2NzBlM2VjNWMyZThjMmI5ZTlkZTBjNzRlODc=")
+      },
+      autoStart: false,
+      description: 'OKX DEX MCP'
+    });
+ 
     logger.info('✅ Default MCP servers registered');
   }
 
